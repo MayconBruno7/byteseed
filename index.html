@@ -1,11 +1,685 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteSeed</title>
+    <title>ByteSeed | Transformação Digital com Tecnologia de Ponta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ícones Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #2E8B57;
+            --primary-dark: #1F6B3D;
+            --primary-light: #E8F5E9;
+            --dark-color: #424040;
+            --light-color: #F8F9FA;
+            --accent-color: #FF6B6B;
+        }
+
+        .bg-seagreen {
+            background-color: #2E8B57 !important;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-padding-top: 80px;
+            /* ajuste conforme a altura do seu menu */
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(232, 245, 233, 0.7) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('assets/img/imagem-insigth.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section::before {
+                display: none;
+            }
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .accent {
+            color: var(--accent-color);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            padding: 12px 28px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 28px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .client-logo {
+            height: 50px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 60px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Em breve novidades</h1>
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/img/logo.png" width="120" height="auto" alt="ByteSeed Logo"
+                            class="d-inline-block align-top">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#inicio">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#areaAtuacao">Áreas de Atuação</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tecnologias">Tecnologias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#servicos">Serviços</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contato">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5" id="inicio">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <span class="highlight">Soluções Digitais</span> que impulsionam seu negócio
+                    </h1>
+                    <p class="lead mb-5">
+                        Na ByteSeed, combinamos tecnologia de ponta com design intuitivo para criar experiências
+                        digitais que encantam usuários e impulsionam resultados.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#contato" class="btn btn-primary-custom btn-lg">
+                            Fazer um orçamento
+                        </a>
+                        <a href="#servicos" class="btn btn-outline-custom btn-lg">
+                            Nossos serviços
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-number">150+</div>
+                    <p class="text-muted">Projetos entregues</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-number">97%</div>
+                    <p class="text-muted">Satisfação dos clientes</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-number">40%</div>
+                    <p class="text-muted">Redução média de custos</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-number">5+</div>
+                    <p class="text-muted">Anos de experiência</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Services Section -->
+    <section class="py-5" id="areaAtuacao">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Áreas de <span class="highlight">Atuação</span></h2>
+                    <p class="lead">Oferecemos soluções completas para todas as etapas do seu projeto digital</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card card-hover h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="service-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Desenvolvimento Web</h3>
+                            <p class="mb-4">Sites e aplicações web personalizados, responsivos e de alta performance,
+                                construídos com as melhores tecnologias do mercado.</p>
+                            <a href="#contato" class="btn btn-outline-custom">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-hover h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="service-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Aplicativos Móveis</h3>
+                            <p class="mb-4">Desenvolvimento de apps nativos e híbridos para iOS e Android, garantindo a
+                                melhor experiência para seus usuários.</p>
+                            <a href="#contato" class="btn btn-outline-custom">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="service-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Soluções de IA</h3>
+                            <p class="mb-4">Implementamos inteligência artificial para automatizar processos, analisar
+                                dados e melhorar a tomada de decisão.</p>
+                            <a href="#" class="btn btn-outline-custom">Saiba mais</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="tecnologias">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Tecnologias que <span class="highlight">Dominamos</span></h2>
+                    <p class="lead">Utilizamos as ferramentas mais modernas para garantir a melhor qualidade e
+                        performance</p>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                        width="60" alt="Laravel" class="mb-3">
+                    <h4 class="h5 fw-bold">Laravel</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg"
+                        width="60" alt="CodeIgniter" class="mb-3">
+                    <h4 class="h5 fw-bold">CodeIgniter</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                        width="60" alt="Flutter" class="mb-3">
+                    <h4 class="h5 fw-bold">Flutter</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        width="60" alt="JavaScript" class="mb-3">
+                    <h4 class="h5 fw-bold">JavaScript</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="60"
+                        alt="PHP" class="mb-3">
+                    <h4 class="h5 fw-bold">PHP</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" width="60"
+                        alt="VueJS" class="mb-3">
+                    <h4 class="h5 fw-bold">VueJS</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                        width="60" alt="TailwindCSS" class="mb-3">
+                    <h4 class="h5 fw-bold">TailwindCSS</h4>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                        width="60" alt="Bootstrap" class="mb-3">
+                    <h4 class="h5 fw-bold">Bootstrap</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-5" id="servicos">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Um pouco dos nossos <span class="highlight">serviços</span></h2>
+                    <p class="lead">Veja como transformamos desafios em resultados extraordinários</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card card-hover h-100">
+                        <div class="row g-0 h-100">
+
+                            <!-- Imagem com altura fixa -->
+                            <div class="col-md-5">
+                                <div class="h-100" style="height: 220px; overflow: hidden;">
+                                    <img src="assets/img/app-intermig.png" class="img-fluid h-100 w-100"
+                                        style="object-fit: cover;" alt="Case 1">
+                                </div>
+                            </div>
+
+                            <div class="col-md-7 d-flex align-items-center">
+                                <div class="card-body p-4">
+                                    <span class="badge bg-seagreen mb-2">Aplicativo</span>
+                                    <h3 class="h4 fw-bold mb-3">Central do Assinante</h3>
+                                    <p class="mb-4">App para clientes do provedor com acesso a faturas e informações do
+                                        contrato.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="https://play.google.com/store/apps/details?id=com.projeto_intermig&hl=pt_BR"
+                                            target="_blank" class="btn btn-sm btn-outline-custom">Ver case</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card card-hover h-100">
+                        <div class="row g-0 h-100">
+
+                            <!-- Imagem com altura fixa -->
+                            <div class="col-md-5">
+                                <div class="h-100" style="height: 100px; overflow: hidden;">
+                                    <img src="assets/img/conectando-talentos.png" class="img-fluid h-100 w-100"
+                                        style="object-fit: cover;" alt="Case 2">
+                                </div>
+                            </div>
+
+                            <div class="col-md-7 d-flex align-items-center">
+                                <div class="card-body p-4">
+                                    <span class="badge bg-seagreen mb-2">Sistema Web</span>
+                                    <h3 class="h4 fw-bold mb-3">Plataforma de Currículos e Vagas</h3>
+                                    <p class="mb-4">
+                                        Sistema moderno para cadastro de currículos e gestão de vagas de emprego.
+
+                                    </p>
+                                    <!-- <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-bold">7s → 0.2s</span> Tempo de resposta
+                                        </div>
+                                        <a href="#" class="btn btn-sm btn-outline-custom">Ver case completo</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <!-- <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">O que nossos <span class="highlight">clientes</span> dizem</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="rounded-circle me-3"
+                                width="50" height="50" alt="Client">
+                            <div>
+                                <h5 class="mb-0 fw-bold">Ana Silva</h5>
+                                <small class="text-muted">CEO, TechSolutions</small>
+                            </div>
+                        </div>
+                        <p>"A ByteSeed transformou completamente nossa plataforma
+                            digital. O atendimento foi excepcional
+                            e os resultados superaram todas as expectativas."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3"
+                                width="50" height="50" alt="Client">
+                            <div>
+                                <h5 class="mb-0 fw-bold">Carlos Mendes</h5>
+                                <small class="text-muted">Diretor, InovaCorp</small>
+                            </div>
+                        </div>
+                        <p>"O aplicativo desenvolvido pela ByteSeed foi fundamental
+                            para nosso crescimento. A equipe
+                            demonstrou profundo conhecimento técnico e
+                            comprometimento."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3"
+                                width="50" height="50" alt="Client">
+                            <div>
+                                <h5 class="mb-0 fw-bold">Juliana Oliveira</h5>
+                                <small class="text-muted">CTO, DigitalMind</small>
+                            </div>
+                        </div>
+                        <p>"A implementação da solução de IA nos proporcionou
+                            insights valiosos. A ByteSeed não é apenas
+                            uma fornecedora, mas uma verdadeira parceira de
+                            negócios."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Clients Section -->
+    <!-- <section class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Alguns de nossos <span class="highlight">clientes</span></h2>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/150x50?text=Cliente+1" class="img-fluid client-logo"
+                        alt="Cliente 1">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/150x50?text=Cliente+2" class="img-fluid client-logo"
+                        alt="Cliente 2">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/150x50?text=Cliente+3" class="img-fluid client-logo"
+                        alt="Cliente 3">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/150x50?text=Cliente+4" class="img-fluid client-logo"
+                        alt="Cliente 4">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-seagreen text-white" id="contato">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Pronto para levar seu negócio
+                        para o próximo nível?</h2>
+                    <p class="lead mb-5">Nossa equipe está pronta para entender suas
+                        necessidades e propor a melhor
+                        solução tecnológica para seu projeto.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://wa.me/5532984924071?text=Olá%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços"
+                            class="btn btn-light btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-whatsapp me-2"></i> Conversar no WhatsApp
+                        </a>
+                        <!-- 
+                        <a href="mailto:contato@byteseed.com" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="bi bi-envelope me-2"></i> Enviar e-mail
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+        <div class="container pt-5">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="assets/img/logo.png" width="150" height="auto" alt="ByteSeed Logo" class="mb-3">
+                    <p class="mb-4">Transformando ideias em soluções digitais
+                        inovadoras.</p>
+                    <div class="mb-4">
+                        <!-- <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a> -->
+                        <a href="https://www.instagram.com/byteseed7/" target="_blank" class="social-icon"><i
+                                class="bi bi-instagram"></i></a>
+                        <!-- <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-4 fw-bold">Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#inicio" class="footer-link">Início</a></li>
+                        <li class="mb-2"><a href="#areaAtuacao" class="footer-link">Áreas de Atuação</a></li>
+                        <li class="mb-2"><a href="#tecnologias" class="footer-link">Tecnologias</a></li>
+                        <li class="mb-2"><a href="#servicos" class="footer-link">Serviços</a></li>
+                        <li><a href="#contato" class="footer-link">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-4 fw-bold">Serviços</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#areaAtuacao" class="footer-link">Desenvolvimento Web</a></li>
+                        <li class="mb-2"><a href="#areaAtuacao" class="footer-link">Aplicativos
+                                Móveis</a></li>
+                        <!-- <li class="mb-2"><a href="#" class="footer-link">Soluções de
+                                IA</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Consultoria
+                                em TI</a></li>
+                        <li><a href="#" class="footer-link">UX/UI Design</a></li> -->
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="mb-4 fw-bold">Contato</h5>
+                    <ul class="list-unstyled">
+                        <!-- <li class="mb-2"><i class="bi bi-envelope me-2"></i>
+                            contato@byteseed.com</li> -->
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (32)
+                            98492-4071</li>
+                        <!-- <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> São
+                            Paulo, SP</li>
+                        <li><i class="bi bi-clock me-2"></i> Seg-Sex: 9h às 18h</li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-top mt-5 pt-4 text-center">
+                <p class="mb-0">
+                    © 2025 ByteSeed Desenvolvimento de Produtos Digitais. Todos os
+                    direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
